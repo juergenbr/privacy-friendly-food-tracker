@@ -16,11 +16,12 @@ along with Privacy friendly food tracker.  If not, see <https://www.gnu.org/lice
 */
 package org.secuso.privacyfriendlyfoodtracker.ui.adapter;
 
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
-import android.view.ViewGroup;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.secuso.privacyfriendlyfoodtracker.R;
 import org.secuso.privacyfriendlyfoodtracker.database.Product;

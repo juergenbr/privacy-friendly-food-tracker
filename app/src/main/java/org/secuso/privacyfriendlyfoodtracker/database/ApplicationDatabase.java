@@ -16,21 +16,22 @@ along with Privacy friendly food tracker.  If not, see <https://www.gnu.org/lice
 */
 package org.secuso.privacyfriendlyfoodtracker.database;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
-import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.commonsware.cwac.saferoom.SafeHelperFactory;
 
-import org.secuso.privacyfriendlyfoodtracker.helpers.KeyGenHelper;
 import org.secuso.privacyfriendlyfoodtracker.database.converter.DateConverter;
+import org.secuso.privacyfriendlyfoodtracker.helpers.KeyGenHelper;
 
 /**
  * Database singleton.

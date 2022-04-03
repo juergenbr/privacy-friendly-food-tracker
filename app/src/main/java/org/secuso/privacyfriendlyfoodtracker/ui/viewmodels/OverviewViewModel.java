@@ -1,23 +1,17 @@
 package org.secuso.privacyfriendlyfoodtracker.ui.viewmodels;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.arch.lifecycle.ViewModelProvider;
-import android.support.annotation.NonNull;
-import android.util.Log;
 
-import org.secuso.privacyfriendlyfoodtracker.database.ConsumedEntries;
-import org.secuso.privacyfriendlyfoodtracker.database.Product;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import org.secuso.privacyfriendlyfoodtracker.ui.adapter.DatabaseEntry;
 import org.secuso.privacyfriendlyfoodtracker.ui.adapter.DatabaseFacade;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.Executors;
 
 public class OverviewViewModel extends AndroidViewModel {
     private LiveData<List<DatabaseEntry>> list = new MutableLiveData<>();

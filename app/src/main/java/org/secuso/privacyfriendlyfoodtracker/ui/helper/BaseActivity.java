@@ -23,20 +23,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.NavigationView.OnNavigationItemSelectedListener;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import org.secuso.privacyfriendlyfoodtracker.ui.BaseStatisticActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.TaskStackBuilder;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
+
 import org.secuso.privacyfriendlyfoodtracker.R;
 import org.secuso.privacyfriendlyfoodtracker.ui.AboutActivity;
+import org.secuso.privacyfriendlyfoodtracker.ui.BaseStatisticActivity;
 import org.secuso.privacyfriendlyfoodtracker.ui.HelpActivity;
 import org.secuso.privacyfriendlyfoodtracker.ui.MainActivity;
 import org.secuso.privacyfriendlyfoodtracker.ui.TutorialActivity;
@@ -55,7 +56,7 @@ import org.secuso.privacyfriendlyfoodtracker.ui.TutorialActivity;
  * This way it will automatically fade in and out every time a transition is happening.
  *
  */
-public abstract class BaseActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
+public abstract class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     // delay to launch nav drawer item, to allow close animation to play
     public static final int NAVDRAWER_LAUNCH_DELAY = 250;

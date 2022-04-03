@@ -16,9 +16,11 @@ along with Privacy friendly food tracker.  If not, see <https://www.gnu.org/lice
 */
 package org.secuso.privacyfriendlyfoodtracker.ui;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 import org.secuso.privacyfriendlyfoodtracker.R;
 import org.secuso.privacyfriendlyfoodtracker.ui.adapter.StatisticPagerAdapter;

@@ -17,14 +17,7 @@ along with Privacy friendly food tracker.  If not, see <https://www.gnu.org/lice
 package org.secuso.privacyfriendlyfoodtracker.ui;
 
 import android.app.Activity;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.DividerItemDecoration;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -36,18 +29,27 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.LinearLayoutManager;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.secuso.privacyfriendlyfoodtracker.R;
-import org.secuso.privacyfriendlyfoodtracker.ui.adapter.DatabaseFacade;
-import org.secuso.privacyfriendlyfoodtracker.ui.adapter.SearchResultAdapter;
 import org.secuso.privacyfriendlyfoodtracker.database.Product;
 import org.secuso.privacyfriendlyfoodtracker.network.ApiManager;
 import org.secuso.privacyfriendlyfoodtracker.network.ProductApiService;
 import org.secuso.privacyfriendlyfoodtracker.network.models.NetworkProduct;
 import org.secuso.privacyfriendlyfoodtracker.network.models.ProductResponse;
 import org.secuso.privacyfriendlyfoodtracker.network.utils.ProductConversionHelper;
+import org.secuso.privacyfriendlyfoodtracker.ui.adapter.DatabaseFacade;
+import org.secuso.privacyfriendlyfoodtracker.ui.adapter.SearchResultAdapter;
 import org.secuso.privacyfriendlyfoodtracker.ui.viewmodels.SharedStatisticViewModel;
 
 import java.util.Calendar;
