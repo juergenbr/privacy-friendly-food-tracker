@@ -79,8 +79,7 @@
             android:name=".ui.BaseAddFoodActivity"
             android:label="@string/title_activity_food"
             android:parentActivityName=".ui.OverviewActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

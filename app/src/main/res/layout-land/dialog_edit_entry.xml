@@ -14,7 +14,7 @@
         android:scaleType="fitCenter"
         app:srcCompat="@mipmap/ic__edit" android:padding="2dp"/>
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputFoodName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,9 +26,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_food_amount"
             android:inputType="number"
-            android:maxLines="1"/>
+            android:maxLines="1" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -17,11 +17,13 @@ along with Privacy friendly food tracker.  If not, see <https://www.gnu.org/lice
 package org.secuso.privacyfriendlyfoodtracker.ui.views;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.widget.Checkable;
+
+import androidx.cardview.widget.CardView;
 
 /**
  * Makes a card view checkable
+ *
  * @author Simon Reinkemeier
  */
 public class CheckableCardView extends CardView
