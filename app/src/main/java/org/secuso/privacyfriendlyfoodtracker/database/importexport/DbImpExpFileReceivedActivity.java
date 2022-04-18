@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.google.gson.Gson;
+import com.google.json.JsonSanitizer;
+
 import org.secuso.privacyfriendlyfoodtracker.R;
 import org.secuso.privacyfriendlyfoodtracker.ui.helper.BaseActivity;
 
@@ -28,10 +31,22 @@ public class DbImpExpFileReceivedActivity extends BaseActivity {
             if ("application/json".equals(type)) {
                 // handle db file import
                 String content = readData(intent.getData());
-                dbImporter.importDatabase(content);
+                if (isJson(content)) {
+                    String wellFormedJson = JsonSanitizer.sanitize(content);
+                    dbImporter.importDatabase(wellFormedJson);
+                }
             }
         }
-        setContentView(R.layout.activity_database);
+    }
+
+    public static boolean isJson(String jsonInString) {
+        try {
+            Gson gson = new Gson();
+            gson.fromJson(jsonInString, Object.class);
+            return true;
+        } catch (com.google.gson.JsonSyntaxException ex) {
+            return false;
+        }
     }
 
     private String readData(Uri uri) {
