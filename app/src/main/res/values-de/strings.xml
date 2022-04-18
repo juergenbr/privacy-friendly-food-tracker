@@ -108,5 +108,6 @@
 
     <string name="search_for">Nach einem Produkt suchen</string>
     <string name="export_db">Export DB</string>
+    <string name="export_products_db">Export Product DB only</string>
     <string name="import_db">Import DB</string>
 </resources>

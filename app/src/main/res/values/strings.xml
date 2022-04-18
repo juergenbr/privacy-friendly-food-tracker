@@ -67,6 +67,10 @@
         To add an entry, touch the "+" symbol on the overview screen. </string>
     <string name="slide3_heading">Github and Guide</string>
     <string name="slide3_text">The sourcecode of this app is available at GitHub. For further explanations have a look at the "Help" page.</string>
+    <string name="slide4_heading" translatable="false">Database export and import</string>
+    <string name="slide4_text" translatable="false">New: You can now use the new "Database" menu entry to export your database, either completely or only the products you added.
+    You can share the exported file directly with someone else or archive it on a cloud storage. To import, just open the exported file and if promted, select this app. The DB will
+    be imported automatically and if successful you will see how many entries were imported.</string>
 
     <string name="okay">Okay</string>
     <string name="viewhelp">View Help</string>
@@ -113,5 +117,8 @@
 
     <string name="search_for">Search for a product</string>
     <string name="export_db">Export DB</string>
+    <string name="export_products_db">Export Product DB only</string>
     <string name="import_db">Import DB</string>
+    <string name="title_activity_db_imp_exp_file_received" translatable="false">Database</string>
+
 </resources>

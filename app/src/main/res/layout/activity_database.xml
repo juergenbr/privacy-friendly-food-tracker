@@ -37,6 +37,17 @@
                 android:theme="@style/AppTheme" />
 
             <Button
+                android:id="@+id/export_products_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorPrimary"
+                android:onClick="onClickExportBtn"
+                android:text="@string/export_products_db"
+                android:textColor="@color/design_default_color_on_primary"
+                android:theme="@style/AppTheme" />
+            <!--
+            <Button
                 android:id="@+id/import_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,7 +57,7 @@
                 android:text="@string/import_db"
                 android:textColor="@color/design_default_color_on_primary"
                 android:theme="@style/AppTheme" />
-
+            -->
         </LinearLayout>
     </LinearLayout>
 

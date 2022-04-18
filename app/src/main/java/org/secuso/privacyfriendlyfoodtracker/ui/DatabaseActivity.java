@@ -17,17 +17,26 @@ along with Privacy friendly food tracker.  If not, see <https://www.gnu.org/lice
 
 package org.secuso.privacyfriendlyfoodtracker.ui;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.core.content.FileProvider;
+
 import org.secuso.privacyfriendlyfoodtracker.R;
-import org.secuso.privacyfriendlyfoodtracker.database.ApplicationDatabase;
-import org.secuso.privacyfriendlyfoodtracker.database.Product;
-import org.secuso.privacyfriendlyfoodtracker.ui.adapter.DatabaseFacade;
+import org.secuso.privacyfriendlyfoodtracker.database.importexport.DatabaseExporter;
+import org.secuso.privacyfriendlyfoodtracker.helpers.PropertyHelper;
 import org.secuso.privacyfriendlyfoodtracker.ui.helper.BaseActivity;
 
-import java.util.List;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Displays an "about" page
@@ -36,14 +45,14 @@ import java.util.List;
  */
 public class DatabaseActivity extends BaseActivity {
 
-    private DatabaseFacade databaseFacade;
+    private Intent intentShareFile = new Intent(Intent.ACTION_SEND);
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_database);
         Button buttonExp = (Button) findViewById(R.id.export_button);
-        Button buttonImp = (Button) findViewById(R.id.import_button);
+        Button buttonPRodExp = (Button) findViewById(R.id.export_products_button);
     }
 
     protected int getNavigationDrawerID() {
@@ -52,7 +61,37 @@ public class DatabaseActivity extends BaseActivity {
 
     public void onClickExportBtn(View v) {
         try {
-            List<Product> products = ApplicationDatabase.getInstance(this.getApplicationContext()).getConsumedEntriesAndProductDao().getAllProducts();
+            DatabaseExporter dbExporter = new DatabaseExporter(this.getApplicationContext());
+            String dbJsonString = "";
+            String pattern = "dd-MM-yyyy";
+            String dateInString = new SimpleDateFormat(pattern).format(new Date());
+            String filename = PropertyHelper.getImpExProperty("db.impex.prefix", this.getApplicationContext()) + "_" + dateInString + ".json";
+            if (v.getId() == R.id.export_button) {
+                dbJsonString = dbExporter.exportDatabase();
+            } else if (v.getId() == R.id.export_products_button) {
+                dbJsonString = dbExporter.exportProductDatabase();
+                filename = PropertyHelper.getImpExProperty("db.impex.prefix", this.getApplicationContext()) + "_products_" + dateInString + ".json";
+            }
+            if (dbJsonString != "") {
+
+                this.create(this.getApplicationContext(), filename, dbJsonString);
+                File file = read(this.getApplicationContext(), filename);
+                if (file.exists()) {
+                    Uri apkURI = FileProvider.getUriForFile(
+                            this.getApplicationContext(),
+                            this.getApplicationContext()
+                                    .getPackageName() + ".provider", file);
+                    intentShareFile.setDataAndType(apkURI, "application/json");
+                    intentShareFile.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    intentShareFile.putExtra(Intent.EXTRA_STREAM, apkURI);
+
+                    intentShareFile.putExtra(Intent.EXTRA_SUBJECT,
+                            "Exporting Food Tracker DB...");
+                    intentShareFile.putExtra(Intent.EXTRA_TEXT, "Exporting Food Tracker DB...");
+
+                    startActivity(Intent.createChooser(intentShareFile, "Share File"));
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,6 +103,36 @@ public class DatabaseActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean create(Context context, String fileName, String jsonString) {
+        try {
+            FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+            if (jsonString != null) {
+                fos.write(jsonString.getBytes());
+            }
+            fos.close();
+            return true;
+        } catch (FileNotFoundException fileNotFound) {
+            return false;
+        } catch (IOException ioException) {
+            return false;
+        }
+    }
+
+    private File read(Context context, String fileName) {
+        try {
+            File dbImpExFile = new File(context.getFileStreamPath(fileName).getAbsolutePath());
+            return dbImpExFile;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public boolean isFilePresent(Context context, String fileName) {
+        String path = context.getFilesDir().getAbsolutePath() + "/" + fileName;
+        File file = new File(path);
+        return file.exists();
     }
 }
 

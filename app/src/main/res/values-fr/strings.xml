@@ -75,5 +75,6 @@
     <string name="pref_example_switch_summary">Example Switch Summary</string>
     <string name="pref_example_summary">Example Summary</string>
     <string name="export_db">Export DB</string>
+    <string name="export_products_db">Export Product DB only</string>
     <string name="import_db">Import DB</string>
 </resources>
