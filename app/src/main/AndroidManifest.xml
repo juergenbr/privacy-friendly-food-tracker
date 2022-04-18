@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:exported="true"
             android:name=".ui.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -79,6 +80,11 @@
             android:name=".ui.BaseAddFoodActivity"
             android:label="@string/title_activity_food"
             android:parentActivityName=".ui.OverviewActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.DatabaseActivity"
+            android:label="@string/action_database"
+            android:parentActivityName=".ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
