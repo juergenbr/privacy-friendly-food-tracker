@@ -23,6 +23,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.core.content.FileProvider;
 
@@ -46,13 +47,18 @@ import java.util.Date;
 public class DatabaseActivity extends BaseActivity {
 
     private Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+    private DatabaseExporter dbExporter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        dbExporter = new DatabaseExporter(this.getApplicationContext());
         setContentView(R.layout.activity_database);
         Button buttonExp = (Button) findViewById(R.id.export_button);
         Button buttonPRodExp = (Button) findViewById(R.id.export_products_button);
+        TextView textProducts = (TextView) findViewById(R.id.text_products);
+        textProducts.setText(getResources().getString(R.string.db_number_products) + " " + dbExporter.getNumberOfProducts());
+        TextView consumedEntries = (TextView) findViewById(R.id.text_conssumedentries);
+        consumedEntries.setText(getResources().getString(R.string.db_number_consumedentries) + " " + dbExporter.getNumberOfConsumedEntries());
     }
 
     protected int getNavigationDrawerID() {
@@ -61,7 +67,6 @@ public class DatabaseActivity extends BaseActivity {
 
     public void onClickExportBtn(View v) {
         try {
-            DatabaseExporter dbExporter = new DatabaseExporter(this.getApplicationContext());
             String dbJsonString = "";
             String pattern = "dd-MM-yyyy";
             String dateInString = new SimpleDateFormat(pattern).format(new Date());

@@ -20,6 +20,24 @@ public class DatabaseExporter {
         this.context = context;
     }
 
+    public int getNumberOfProducts() {
+        try {
+            return ApplicationDatabase.getInstance(context).getProductDao().getAllProducts().getValue().size();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int getNumberOfConsumedEntries() {
+        try {
+            return ApplicationDatabase.getInstance(context).getConsumedEntriesDao().getAllConsumedEntries().size();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     public String exportDatabase() {
         try {
             List<Product> products = ApplicationDatabase.getInstance(context).getProductDao().getAllProducts().getValue();
