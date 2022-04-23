@@ -54,7 +54,9 @@ public class DatabaseActivity extends BaseActivity {
         dbExporter = new DatabaseExporter(this.getApplicationContext());
         setContentView(R.layout.activity_database);
         Button buttonExp = (Button) findViewById(R.id.export_button);
-        Button buttonPRodExp = (Button) findViewById(R.id.export_products_button);
+        buttonExp.setOnClickListener(this::onClickExportBtn);
+        Button buttonProdExp = (Button) findViewById(R.id.export_products_button);
+        buttonProdExp.setOnClickListener(this::onClickExportBtn);
         TextView textProducts = (TextView) findViewById(R.id.text_products);
         textProducts.setText(getResources().getString(R.string.db_number_products) + " " + dbExporter.getNumberOfProducts());
         TextView consumedEntries = (TextView) findViewById(R.id.text_conssumedentries);
