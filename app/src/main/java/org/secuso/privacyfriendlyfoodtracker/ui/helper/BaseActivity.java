@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -38,6 +39,7 @@ import com.google.android.material.navigation.NavigationView;
 import org.secuso.privacyfriendlyfoodtracker.R;
 import org.secuso.privacyfriendlyfoodtracker.ui.AboutActivity;
 import org.secuso.privacyfriendlyfoodtracker.ui.BaseStatisticActivity;
+import org.secuso.privacyfriendlyfoodtracker.ui.DatabaseActivity;
 import org.secuso.privacyfriendlyfoodtracker.ui.HelpActivity;
 import org.secuso.privacyfriendlyfoodtracker.ui.MainActivity;
 import org.secuso.privacyfriendlyfoodtracker.ui.TutorialActivity;
@@ -160,7 +162,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
      * @param itemId Item that has been clicked by the user
      */
     private void callDrawerItem(final int itemId) {
-
+        Log.println(Log.DEBUG, "", "" + itemId);
         Intent intent;
 
         switch(itemId) {
@@ -175,6 +177,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
                 break;
             case R.id.nav_statistic:
                 intent = new Intent(this, BaseStatisticActivity.class);
+                createBackStack(intent);
+                break;
+            case R.id.nav_database:
+                intent = new Intent(this, DatabaseActivity.class);
                 createBackStack(intent);
                 break;
             case R.id.nav_about:

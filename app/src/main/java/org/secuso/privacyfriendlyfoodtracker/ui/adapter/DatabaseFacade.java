@@ -85,11 +85,11 @@ public class DatabaseFacade {
         Executors.newSingleThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                List<ConsumedEntries> res = consumedEntriesDao.findConsumedEntriesById(id);
-                if (res.size() != 1) {
+                ConsumedEntries res = consumedEntriesDao.findConsumedEntriesById(id);
+                if (null == res) {
                     return;
                 }
-                consumedEntriesDao.delete(res.get(0));
+                consumedEntriesDao.delete(res);
             }
         });
     }
@@ -103,13 +103,13 @@ public class DatabaseFacade {
         Executors.newSingleThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                List<ConsumedEntries> res = consumedEntriesDao.findConsumedEntriesById(id);
-                if (res.size() != 1) {
+                ConsumedEntries res = consumedEntriesDao.findConsumedEntriesById(id);
+                if (null == res) {
                     return;
                 }
-                ConsumedEntries consumedEntry = res.get(0);
+                ConsumedEntries consumedEntry = res;
                 consumedEntry.amount = amount;
-                consumedEntriesDao.update(res.get(0));
+                consumedEntriesDao.update(consumedEntry);
             }
         });
     }

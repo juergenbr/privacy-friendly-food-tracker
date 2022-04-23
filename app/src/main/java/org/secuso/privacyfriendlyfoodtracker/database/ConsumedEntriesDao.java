@@ -54,7 +54,7 @@ public interface ConsumedEntriesDao {
     List<ConsumedEntries> findConsumedEntriesBetweenDates(final Date dayst, final Date dayet);
 
     @Query("SELECT * FROM consumedEntries WHERE id=:id")
-    List<ConsumedEntries> findConsumedEntriesById(final int id);
+    ConsumedEntries findConsumedEntriesById(final int id);
 
     @Query("SELECT * FROM consumedEntries WHERE productId=:productId AND amount=:amount AND date=:date AND name=:name  ")
     List<ConsumedEntries> findExistingConsumedEntries( int productId, int amount,  Date date, String name);
