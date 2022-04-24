@@ -14,11 +14,11 @@ The app also allows an analysis of calorie consumption over a larger timeframe s
 This app belongs to the group “Privacy Friendly Apps” developed by the research group SECUSO at Karlsruhe Institute of Technology. You can find more information at [the SECUSO website](https://secuso.org/pfa).
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
-     alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/org.secuso.privacyfriendlyfoodtracker/)
+alt="Get it on F-Droid"
+height="80">](https://f-droid.org/packages/com.breitenbaumer.privacyfriendlyfoodtracker/)
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
-     alt="Get it on Google Play"
-     height="80">](https://play.google.com/store/apps/details?id=org.secuso.privacyfriendlyfoodtracker)
+alt="Get it on Google Play"
+height="80">](https://play.google.com/store/apps/details?id=com.breitenbaumer.privacyfriendlyfoodtracker)
 
 
 ## Download and more Information

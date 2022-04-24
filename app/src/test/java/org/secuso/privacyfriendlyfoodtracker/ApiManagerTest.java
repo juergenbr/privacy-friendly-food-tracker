@@ -1,14 +1,15 @@
-package org.secuso.privacyfriendlyfoodtracker;
+package com.breitenbaumer.privacyfriendlyfoodtracker;
 
 import static org.junit.Assert.assertTrue;
 
+import com.breitenbaumer.privacyfriendlyfoodtracker.network.ApiManager;
+import com.breitenbaumer.privacyfriendlyfoodtracker.network.ProductApiService;
+import com.breitenbaumer.privacyfriendlyfoodtracker.network.models.NetworkProduct;
+import com.breitenbaumer.privacyfriendlyfoodtracker.network.models.ProductResponse;
+import com.breitenbaumer.privacyfriendlyfoodtracker.network.utils.ProductConversionHelper;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.secuso.privacyfriendlyfoodtracker.network.ApiManager;
-import org.secuso.privacyfriendlyfoodtracker.network.ProductApiService;
-import org.secuso.privacyfriendlyfoodtracker.network.models.NetworkProduct;
-import org.secuso.privacyfriendlyfoodtracker.network.models.ProductResponse;
-import org.secuso.privacyfriendlyfoodtracker.network.utils.ProductConversionHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ import retrofit2.Response;
 public class ApiManagerTest {
     ProductApiService mProductApiService = null ;
     ProductResponse productResponse = new ProductResponse();
-    List<org.secuso.privacyfriendlyfoodtracker.database.Product> products = new ArrayList<>();
+    List<com.breitenbaumer.privacyfriendlyfoodtracker.database.Product> products = new ArrayList<>();
 
     @Before
     public void createManager() {
